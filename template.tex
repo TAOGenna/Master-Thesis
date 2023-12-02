@@ -1,0 +1,95 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \documentclass[12pt,papel,twoside]{ibtesis}
+\documentclass[12pt,screen,twoside,pagebackref]{ibtesis}
+% \documentclass[12pt,papel,singlespace,oneside]{ibtesis}
+% \documentclass[12pt,papel,preprint,singlespace,oneside]{ibtesis}
+\usepackage[normalem]{ulem}
+
+%%%%%%%%%%%%%%%%%%%%% Paquetes extra %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Por conveniencia: aqu\'{\i} puede cargar todos los paquetes y definir los comandos 
+% que necesite
+\usepackage{ibextra}
+\usepackage{physics}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+\decimalpoint
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% Informacion sobre la tesis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Efecto de repulsi\'{o}n interat\'{o}mica en modos cero de Majorana en un sistema de punto cu\'{a}ntico acoplado a un nanocable superconductor}
+\author{Renzo Kenyi Takagui Perez}
+\director{Dr. Armando Aligia}
+\carrera{Tesis de Maestría en Ciencias Físicas}
+\grado{}
+\laboratorio{Grupo de Teoría de Materia Condensada - Centro At\'{o}mico Bariloche}
+\jurado{Dr. Jorge Facio\\
+Dr. Pablo Cornaglia\\
+Dr. Alejandro Lobos} 
+
+\palabrasclave{Cadena de Kitaev, Fases Topol\'{o}gicas, Modos cero de Majorana, Superconductores, punto cu\'{a}ntico}
+\keywords{microwave resonators, quality factor, SONNET simulations}
+% Si queremos poner la fecha manualmente:
+% \date{Diciembre de 2099}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\titlepagefalse % Si no quiere compilar la portada descomente esta linea
+%\includeonly{apendices} % Compilar s\'{o}lo estos archivos 
+\graphicspath{{figs/}} % Lugar donde encontrar las figuras generales (se puede poner uno en cada cap{\'{\i}}tulo)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+% Dentro del environment 'preliminary' va:
+% la dedicatoria, resumen, abstract, indices
+\begin{preliminary}
+% Escriba su dedicatoria
+\agradecimientos{
+...
+}
+%\dedicatoria{
+%A mi familia y amigos \sout{(y a chiquito)}\\
+%}
+
+%%% \'{I}ndices %%%%
+
+
+
+\tableofcontents                %\'{I}ndice
+
+
+\include{resumen}
+
+\end{preliminary}
+
+
+% Podemos usar cualquiera de los dos comandos: \input o \include para incluir el texto
+%\include{cap1}
+%\include{cap2}
+%\include{cap2bis}
+%\include{cap3}
+\include{ch1}
+\include{ch2}
+\include{ch3}
+\include{Ch4}
+\include{cap4}
+%\include{cap3bis}
+%\include{cap5}
+
+
+
+\begin{biblio}
+\bibliography{mibib}
+\end{biblio}
+
+
+%\begin{postliminary}
+
+
+%\end{postliminary}
+
+\end{document}
+

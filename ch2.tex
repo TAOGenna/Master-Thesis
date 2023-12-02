@@ -1,0 +1,81 @@
+\chapter{Espectro de energ\'{i}as de la cadena de Kitaev}
+Antes de abordar el sistema completo, incluyendo el punto cu\'{a}ntico, estudiamos la cadena de Kitaev finita. Si bien esta se conoce, para ver el efecto de la interacci\'{o}n con el punto cu\'{a}ntico necesitamos informaci\'{o}n detallada de la cadena aislada.\\
+Para estudiar el espectro de energ\'{i}as de una cadena aislada finita y extensiones del modelo, introduciremos un m\'{e}todo de mapeo similar a la notaci\'{o}n de Nambu que nos permitir\'{a} obtener la matriz del sistema tal que podamos diagonalizarla por m\'{e}todos computacionales.
+
+El m\'{e}todo nos permite hacer un mapeo que nos lleva de trabajar con operadores fermionicos a kets o bras. 
+\begin{equation}
+    c_\alpha \longleftrightarrow \ket{\alpha,a},\quad c_\alpha^\dagger\longleftrightarrow \ket{\alpha,c} 
+\end{equation}
+donde $a$ significa aniquilaci\'{o}n y $c$ creaci\'{o}n. Luego de realizar el mapeo de cualquier hamiltoniano $H\iff \tilde H$, llegaremos a una forma general
+\begin{equation}
+    \tilde{H}=\sum_{\beta\alpha} (A_{\beta\alpha} \ket{\beta a}\bra{\alpha a} + B_{\beta\alpha}\ket{\beta c}\bra{\alpha a} - \overline{A}_{\beta\alpha} \ket{\beta c}\bra{\alpha c} - \overline{B}_{\beta\alpha}\ket{\beta a}\bra{\alpha c}) 
+\end{equation}
+donde la barra sobre $A_{\beta\alpha}$ y $B_{\beta\alpha}$ significa complejo conjugado. Entonces si queremos conocer los elementos de matrix del Hamiltoniano empezamos a aplicar $\tilde{H}$ a las bases $\ket{\alpha a}$ y $\ket{\alpha c}$:
+\begin{equation}
+    \begin{split}
+        \tilde{H}\ket{\alpha a} &= \sum_\beta(A_{\beta\alpha}\ket{\beta a} + B_{\beta\alpha}\ket{\beta c}),
+\\
+        \tilde{H}\ket{\alpha c} &= - \sum_\beta(\overline{A}_{\beta\alpha}\ket{\beta a} + \overline{B}_{\beta\alpha}\ket{\beta c}).
+    \end{split}
+    \label{mapeo1}
+\end{equation}
+%
+% Kitaev  Clasico 
+%
+\begin{figure}[th]
+    \centering
+    \includegraphics[width=0.92\textwidth]{ch1f/Kita_classic.pdf}
+    \caption{Espectro de energ\'{i}a en funci\'{o}n del valor del potencial qu\'{i}mico $\mu$ para una cadena de Kitaev aislada con $\Delta=1$ y $t=1$. El sistema est\'{a} en su fase topol\'{o}gica para $|\mu| < 2$. Para $|\mu| < 2$ los MZMs se empiezan a separar y el sistema entra en su fase trivial.}
+    \label{fig:kita_clasic}
+\end{figure}
+Notamos que esta forma es muy similar a la de computar el conmutador $[c_\alpha,H]$
+\begin{equation}
+           [c_\alpha,H] = \sum_\beta(A_{\beta\alpha}c_\beta + B_{\beta\alpha}c^\dagger_\beta), 
+           \label{mapeo2}
+\end{equation}
+por lo tanto nos encargaremos de computar todos los conmutadores tal que obtengamos los correspondientes $A_{\beta\alpha}$ y $B_{\beta\alpha}$.
+A modo de ejemplo, tomemos de nuevo el Hamiltoniano de la cadena de Kitaev
+\begin{equation}
+    H=\sum_i\Big[ (-tc^\dagger_{j+1}c_j + \Delta c^\dagger_{j+1}c^\dagger_j+h.c.) -\mu c^\dagger_j c_j \Big].
+\end{equation}
+Computamos los conmutadores en el caso de si $j$ no es ni el primero ni el \'{u}ltimo:
+\begin{equation}
+    \begin{split}
+            [H,c^\dagger_j]&=-\mu c^\dagger_j - t(c^\dagger_{j+1}+c^\dagger_{j-1})+\Delta(c_{j-1}-c_{j+1})
+            \\
+            [H,c_j]&=-\mu c_j - t(c_{j+1}+c_{j-1})+\Delta(c^\dagger_{j-1}-c^\dagger_{j+1})
+    \end{split}
+\end{equation}
+sus an\'{a}logos en forma de ket ser\'{i}an
+\begin{equation}
+    \begin{split}
+        \tilde{H}\ket{j c}&=-\mu\ket{j c}-t(\ket{j+1,c}+\ket{j-1,c})+\Delta(\ket{j-1,a}-\ket{j+1,a})\\
+        \tilde{H}\ket{ja}&=+\mu\ket{ja}+t(\ket{j+1,a}+\ket{j-1,a})+\Delta(\ket{j+1,c}-\ket{j-1,c})
+    \end{split}
+    \label{kitaev_matrix_element}
+\end{equation}
+Aplicando $\bra{jc}$ o $\bra{ja}$ podremos encontrar su forma de matriz y a partir de ah\'{i} hacer la diagonalizaci\'{o}n. Para $t=\Delta$ y variando $\mu$ en un rango de $[ 0 , 2.5 ]$ obtenemos el espectro de energ\'{i}a de la figura \ref{fig:kita_clasic}. No exploramos el rango negativo ya que la gr\'{a}fica ser\'{a} sim\'{e}trica.  Vemos que en la fase topol\'{o}gica $\mu<2t$. De la ecuaci\'{o}n (\ref{hammy_kitaev_topo}) podemos concluir que estos nuevos autoestados tendr\'{a}n una energ\'{i}a degenerada en $E=2t$ y $E=-2t$. Se pueden obtener los mismos resultados si aplicamos el mapeo de operadores $c_i^\dagger$ y $c_i$ a kets, y seguidamente calculamos la conmutacion con el hamiltoniano. los MZMs son los autoestados con energ\'{i}as cercanas al cero.\\
+En la figura \ref{fig:kitaev} se presentan perfiles de espectro de energ\'{i}as para una cadena de Kitaev aislada para $N=20$ y $N=50$ sitios en funci\'{o}n del potencial qu\'{i}mico. Los par\'{a}metros usados para la cadena son $t=1$ y $\Delta=0.2$. Para cada autoenerg\'{i}a le corresponde su mismo valor pero negativo ya que los operadores de creaci\'{o}n y aniquilaci\'{o}n que diagonalizan el hamiltoniano tienen energ\'{i}as opuestas. Las energ\'{i}as m\'{a}s pr\'{o}ximas a $0$ corresponden a los MZMs con una peque\~{n}a hibridizaci\'{o}n entre ellos. Los autoestados intermedios en el gap son los modos fermi\'{o}nicos compuestos por los Majorana que se encuentran en los extremos de la cadena, y estos se mantienen robustos hasta alcanzar $\mu=2$ que, como se explic\'{o} antes, corresponde a un cambio de la fase topol\'{o}gica a la trivial porque se cumple la desigualdad $|\mu|>2|t|$. 
+Para apreciar mejor el comportamiento de estos estados cercanos a una energ\'{i}a cero realizamos un acercamiento al caso de la cadena de $N=50$ sitios en la figura \ref{fig:kita50d}. Estos oscilan alrededor de la energ\'{i}a cero. Tambi\'{e}n, notamos que cuanto m\'{a}s grande es la cadena, los Majoranas se acercan much\'{i}simo m\'{a}s a energ\'{i}a cero. Esto se debe a que en cuanto m\'{a}s larga la cadena menos hibridaci\'{o}n habr\'{a} entre ellos entonces se espera una divisi\'{o}n menor. Adicionalmente, se observa un crecimiento abrupto de las energ\'{i}as al entrar el sistema en la fase no topol\'{o}gica para $\mu\geq 2$. El hecho de que la transici\'{o}n est\'{a} para $\mu$ ligeramente inferior a $2$ es probablemente un efecto de tama\~{n}o. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%KITAEV
+%
+\begin{figure}[th]
+\begin{center}
+\includegraphics*[width=0.92\columnwidth]{ch1f/Kita20.pdf}\\
+\vspace{-0.3cm}
+\includegraphics*[width=0.92\columnwidth]{ch1f/Kita50.pdf}
+\end{center}
+\caption{Espectro de energı́a en función del valor del potencial quı́mico $\mu$ para una cadena de Kitaev de $N=20$ y $N=50$ sitios. Los otros par\'{a}metros usados para ambos son de $t=1$ y $\Delta=0.2$. Las dos energías más próximas a cero de energ\'{i}a corresponden a los MZMs ligeramente hibridizados.}
+\label{fig:kitaev}
+\end{figure}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Ahora nos preguntamos qu\'{e} tiene que pasar para que aparezcan energ\'{i}as cero. Kitaev encontr\'{o} que para que ocurra la fase topol\'{o}gica debemos tener $2|w|>|\mu|$ y $\Delta \neq 0$. 
+%
+% Upclose Kitaev 
+%
+\begin{figure}[th]
+    \centering
+    \includegraphics[width=0.92\textwidth]{ch1f/Kita50d.pdf}
+    \caption{Acercamiento a la figura \ref{fig:kitaev} para el caso de $N=50$ para apreciar mejor el comportamiento de las energ\'{i}as correspondientes a los MZMs. Estas muestran una oscilaci\'{o}n a trav\'{e}s de todo el rango de valores de $\mu$ para el cual el sistema est\'{a} en su fase topol\'{o}gica.}
+    \label{fig:kita50d}
+\end{figure}
