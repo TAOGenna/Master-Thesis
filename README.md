@@ -1,2 +1,2 @@
 # Master-Thesis-LaTeX
-LaTeX code of my master thesis on theoretical physics
+PDF and LaTeX code of my master thesis on theoretical condensed matter physics
